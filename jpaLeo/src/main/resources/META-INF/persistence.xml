@@ -6,8 +6,8 @@
     <persistence-unit name="incubaria">
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/incubaria"/>
-            <property name="javax.persistence.jdbc.user" value="s2it_leferreira" />
-            <property name="javax.persistence.jdbc.password" value="123123" />
+            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="postgres" />
         </properties>
     </persistence-unit>
 </persistence>

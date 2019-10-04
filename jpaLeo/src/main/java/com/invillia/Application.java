@@ -17,7 +17,7 @@ public class Application {
 
 //        authorDAO.insert(new Author(
 //                "rafael",
-//                "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"
+//                "lorem ipsum lorem ipsum lorem ipsum"
 //        ));
 
 //        System.out.println(authorDAO.findAll());

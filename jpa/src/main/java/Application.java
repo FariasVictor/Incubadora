@@ -10,23 +10,34 @@ public class Application {
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 //        INSERT
-//        Teams teams = new Teams("Toca do Lobo");
-        TeamsDAO teamsDAO = new TeamsDAO(entityManager);
+        //Team team = new Team("Toca do Lobo");
+        TeamDAO teamDAO = new TeamDAO(entityManager);
 //
-//        teamsDAO.insert(teams);
+        //teamDAO.insert(team);
 
 
 //        UPDATE
-//            TeamsDAO teamsDAO = new TeamsDAO(entityManager);
-//            Teams teams =teamsDAO.findById(3L);
-//            teams.setName("Normandia");
-//            teamsDAO.update(teams);
-
+//            TeamDAO teamDAO = new TeamDAO(entityManager);
+//            Team team =teamDAO.findById(5L);
+//            team.setName("Normandia");
+//            teamDAO.update(team);
+//
 //        DELETE
-        teamsDAO.deleteFromId(4L);
+        //  teamDAO.deleteFromId(5L);
 //        SELECT
-//        TeamsDAO teamsDAO = new TeamsDAO(entityManager);
-        System.out.println(teamsDAO.findAll());
-        //System.out.println(teamsDAO.findById(1L));
+       // TeamDAO teamDAO = new TeamDAO(entityManager);
+        //System.out.println(teamDAO.findById(1L));
+        System.out.println(teamDAO.findAll());
+// ---------------------------------------------------------------------------------------------------------------------
+
+        MemberDAO memberDAO = new MemberDAO(entityManager);
+//        Team team = teamDAO.findById(1L);
+//        Member member = new Member("Víctor",team);
+//        memberDAO.insert(member);
+//
+////        memberDAO.deleteById(6L);
+//
+        System.out.println(memberDAO.findAll());
+        //System.out.println(memberDAO.findById(1L));
     }
 }

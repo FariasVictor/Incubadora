@@ -6,7 +6,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 //        String cpf = getPessoaCPF();
-        String cpf = "000000000";
+        String cpf = "28279567801";
         System.out.println(valida(cpf));
     }
 

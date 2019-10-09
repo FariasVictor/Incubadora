@@ -1,8 +1,10 @@
 import javax.persistence.*;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Entity
-public class Teams {
+@Table(name = "team")
+public class Team {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,16 +13,19 @@ public class Teams {
     @Column(name="name",nullable=false,length=255)
     private String name;
 
-    public Teams(){
+    //@OneToMany(mappedBy = "team")
+    //private List<Member> member;
+
+    public Team(){
     }
 
-    public Teams(String name){
+    public Team(String name){
         this.name=name;
     }
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", "Author(", ")")
+        return new StringJoiner(", ", "Team(", ")")
                 .add("id=" + id)
                 .add("name=" + name)
                 .toString();

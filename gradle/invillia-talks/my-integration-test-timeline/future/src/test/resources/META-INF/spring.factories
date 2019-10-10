@@ -1,3 +1,0 @@
-org.springframework.test.context.TestExecutionListener=\
-  br.com.leonardoferreira.future.executionlistener.CleanDatabaseTestExecutionListener,\
-  br.com.leonardoferreira.future.executionlistener.RestAssuredTestExecutionListener

@@ -49,9 +49,13 @@ public class Application {
 //        accountDAO.deleteById(3L);
 
 //UPDATE
-        Account account=accountDAO.findById(2L);
-        account.setBalance(1000);
-        accountDAO.update(account);
+//        Account account=accountDAO.findById(2L);
+//        account.setBalance(1000);
+//        accountDAO.update(account);
+
+        Account account= accountDAO.findById(2L);
+        Operations op=new Operations(entityManager);
+        op.withdraw(account,1300);
         System.out.println(accountDAO.findAll());
     }
 

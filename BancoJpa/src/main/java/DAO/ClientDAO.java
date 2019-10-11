@@ -1,10 +1,12 @@
 package DAO;
+
 import domain.Client;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 public class ClientDAO {
     private EntityManager entityManager;
@@ -12,7 +14,7 @@ public class ClientDAO {
 
     public ClientDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
-        transaction= entityManager.getTransaction();
+        transaction = entityManager.getTransaction();
     }
 
 
@@ -25,26 +27,27 @@ public class ClientDAO {
         transaction.commit();
     }
 
-    public List<Client> findAll(){
-        TypedQuery<Client> clients= entityManager.createQuery(
+    public List<Client> findAll() {
+        TypedQuery<Client> clients = entityManager.createQuery(
                 "FROM Client",
                 Client.class
         );
         return clients.getResultList();
     }
 
-    public Client findById(long id){
-        return entityManager.find(Client.class,id);
+    public Optional<Client> findById(long id) {
+        Client client = entityManager.find(Client.class, id);
+        return client == null ? Optional.empty() : Optional.of(client);
     }
 
-    public void update(Client client){
+    public void update(Client client) {
 
         transaction.begin();
         entityManager.merge(client);
         transaction.commit();
     }
 
-    public void delete(Client client){
+    public void delete(Client client) {
         transaction.begin();
         entityManager.remove(client);
         transaction.commit();

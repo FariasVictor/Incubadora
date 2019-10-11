@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 public class AccountDAO {
     private EntityManager entityManager;
@@ -34,8 +35,9 @@ public class AccountDAO {
         return accounts.getResultList();
     }
 
-    public Account findById(long id){
-        return entityManager.find(Account.class,id);
+    public Optional<Account> findById(long id){
+        Account account = entityManager.find(Account.class,id);
+        return account == null ? Optional.empty() : Optional.of(account);
     }
 
     public void deleteById(long id){

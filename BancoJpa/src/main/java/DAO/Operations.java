@@ -11,33 +11,51 @@ public class Operations {
 
     public Operations(EntityManager entityManager) {
         this.entityManager = entityManager;
-        this.transaction=this.entityManager.getTransaction();
+        this.transaction = this.entityManager.getTransaction();
     }
 
-    public void withdraw(Account account, double value){
-        AccountDAO accountDAO=new AccountDAO(entityManager);
+    public void withdraw(Account account, double value) {
+        AccountDAO accountDAO = new AccountDAO(entityManager);
 
         double balance = account.getBalance();
-        double availableOverdraft = account.getOverdraft();
-        if(value<=balance+availableOverdraft) {
-            if(value>balance) {
+        double availableOverdraft = account.getAvailableOverdraft();
+
+        if (value <= balance + availableOverdraft) {
+            if (value > balance) {
 //               value-=balance;
 //               availableOverdraft-=value;
-                 availableOverdraft=(balance+availableOverdraft)-value;
-                balance=0;
-            }else{
-                balance-=value;
+                availableOverdraft = (balance + availableOverdraft) - value;
+                balance = 0;
+            } else {
+                balance -= value;
             }
-        }else{
+        } else {
             System.out.println("Limite indisponível");
         }
 
-        account.setOverdraft(availableOverdraft);
+        account.setAvailableOverdraft(availableOverdraft);
         account.setBalance(balance);
         accountDAO.update(account);
     }
 
-    public void deposit(Account account, double value){
+    public void deposit(Account account, double value) {
 
+        double maxOverdraft = account.getMaxOverdraft();
+        double availableOverdraft = account.getAvailableOverdraft();
+        double balance = account.getBalance();
+
+        double accountDebt = maxOverdraft - availableOverdraft;
+
+        if (value >= accountDebt) {
+            availableOverdraft = maxOverdraft;
+            value -= accountDebt;
+            balance += value;
+        } else {
+            availableOverdraft += value;
+        }
+        account.setAvailableOverdraft(availableOverdraft);
+        account.setBalance(balance);
+        AccountDAO accountDAO=new AccountDAO(entityManager);
+        accountDAO.update(account);
     }
 }

@@ -32,10 +32,10 @@ public class Application {
 //        System.out.println("Find All:"+clientDAO.findAll());
 
         ClientDAO clientDAO=new ClientDAO(entityManager);
-        Client client = clientDAO.findById(1L);
+//        Client client = clientDAO.findById(1L);
 //        Account account=new Account(client,200,500,013);
 //        Account account2=new Account(client,200,500,001);
-        AccountDAO accountDAO=new AccountDAO(entityManager);
+//        AccountDAO accountDAO=new AccountDAO(entityManager);
 //INSERT
 //        accountDAO.insert(account);
 //        accountDAO.insert(account2);
@@ -50,13 +50,14 @@ public class Application {
 
 //UPDATE
 //        Account account=accountDAO.findById(2L);
-//        account.setBalance(1000);
+//        account.setBalance(10availableOverdraft00);
 //        accountDAO.update(account);
-
-        Account account= accountDAO.findById(2L);
+        AccountDAO accountDAO=new AccountDAO(entityManager);
+        Account account= accountDAO.findById(6L);
         Operations op=new Operations(entityManager);
-        op.withdraw(account,1300);
-        System.out.println(accountDAO.findAll());
+        op.deposit(account,350);
+        //op.withdraw(account,300);
+        System.out.println(accountDAO.findById(6L));
     }
 
 

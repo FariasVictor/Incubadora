@@ -27,7 +27,7 @@ public class Application {
     public static void menu() {
         int option;
         do {
-            option = readInt("1.Operações\n2.Cadastrar cliente/conta \n.3.Sair");
+            option = readInt("1.Operações\n2.Cadastrar cliente/conta \n3.Sair");
 
             switch (option) {
                 case 1:

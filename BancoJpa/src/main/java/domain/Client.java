@@ -26,10 +26,10 @@ public class Client {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Client.class.getSimpleName() + "[", "]")
-                .add("id_client=" + id_client)
-                .add("name='" + name + "'")
-                .add("cpf='" + cpf + "'")
+        return new StringJoiner("\n", "\nDados do cliente\n", "")
+                //.add("id_client=" + id_client)
+                .add("Nome: '" + name + "'")
+                .add("CPF: '" + cpf + "'")
                 .toString();
     }
 

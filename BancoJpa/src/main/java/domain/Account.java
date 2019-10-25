@@ -40,12 +40,12 @@ public class Account {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", Account.class.getSimpleName() + "[", "]")
-                .add("accountNumber=" + accountNumber)
-                .add("client=" + client)
-                .add("balance=" + balance)
-                .add("availableOverdraft=" + availableOverdraft)
-                .add("type=" + type)
+        return new StringJoiner("\n","Dados da conta\n" ,"")
+                .add(""+client)
+                .add("Número da Conta: " + accountNumber)
+                .add("Saldo: R$" + balance)
+                .add("Limite Disponível: R$" + availableOverdraft)
+                .add("Tipo da Conta: " + type)
                 .toString();
     }
 

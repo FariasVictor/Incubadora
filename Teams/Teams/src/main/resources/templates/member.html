@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CRUD Times</title>
+    <title>CRUD Membros</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,37 +18,32 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>CRUD <b>Times</b></h2>
-                <div class="col-sm-6">
-                    <a href="#addTeamModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-                        <span>Adicionar Time</span></a>
-                    <a href="#" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i>
-                        <span>Delete</span></a>
-                </div>
+                    <h2>CRUD <b>Membros</b></h2>
                 </div>
             </div>
         </div>
         <table class="table table-striped table-hover">
             <thead>
             <tr>
-                <th>Nome</th>
                 <th>ID</th>
+                <th>Nome</th>
+                <th>Time</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:if="${teams.empty}">
-                <td colspan="4" align="center">Nenhum usuário encontrado!</td>
+            <tr th:if="${members.empty}">
+                <td colspan="5" align="center">Nenhum usuário encontrado!</td>
             </tr>
-            <tr th:each="team : ${teams}">
-                <td><a th:href="@{member/{id} (id=${team.id})}" th:text="${team.name}"></a></td>
-                <td th:text="${team.id}"></td>
-                <td>
-                    <a th:href="@{/edit-team/{id}(id=${team.id})}" class="edit" data-toggle="modal"><i
+            <tr th:each="member : ${members}">
+                <td><a th:href="@{member/{id} (id=${member.id})}" th:text="${member.name}"></a></td>
+                <td th:text="${member.id}"></td>
+                <td th:if="${members.empty}" >
+                    <a th:href="@{/edit-member/{id}(id=${member.id})}" class="edit" data-toggle="modal"><i
                             class="material-icons"
                             data-toggle="tooltip"
                             title="Edit">&#xE254;</i></a>
-                    <a th:href="@{/delete/{id}(id=${team.id})}" class="delete" data-toggle="modal"><i
+                    <a th:href="@{/delete/{id}(id=${member.id})}" class="delete" data-toggle="modal"><i
                             class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
@@ -57,35 +52,12 @@
         </table>
     </div>
 </div>
-<!-- Edit Modal HTML -->
-<div id="addTeamModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form th:action="@{/add-team}" th:object="${team}" method="post">
-                <div class="modal-header">
-                    <h4 class="modal-title">Adicionar Time</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" class="form-control" name="name" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-success" value="Add">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 <script>
    /* function postmyjava(id){
 //alert(id);
 $.ajax({
-    url: 'http://localhost:8080/edit-team/'+id.toString(),
+    url: 'http://localhost:8080/edit-member/'+id.toString(),
     processData: false,
     contentType: false,
     type: 'POST',
@@ -155,7 +127,7 @@ body {
 		padding: 12px 15px;
 		vertical-align: middle;
     }
-
+	
 	table.table tr th:last-child {
 		width: 100px;
 	}
@@ -238,38 +210,6 @@ body {
     }
 
 	}
-/* Modal styles */
-	.modal .modal-dialog {
-		max-width: 400px;
-	}
-	.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-		padding: 20px 30px;
-	}
-	.modal .modal-content {
-		border-radius: 3px;
-	}
-	.modal .modal-footer {
-		background: #ecf0f1;
-		border-radius: 0 0 3px 3px;
-	}
-    .modal .modal-title {
-        display: inline-block;
-    }
-	.modal .form-control {
-		border-radius: 2px;
-		box-shadow: none;
-		border-color: #dddddd;
-	}
-	.modal textarea.form-control {
-		resize: vertical;
-	}
-	.modal .btn {
-		border-radius: 2px;
-		min-width: 100px;
-	}
-	.modal form label {
-		font-weight: normal;
-	}
 
 
 
@@ -277,4 +217,3 @@ body {
 
 </style>
 </html>
-<!--th:action="@{/edit-team/{id}(id=${team.id})}-->

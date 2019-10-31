@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -24,16 +25,15 @@ public class MemberController {
         this.teamService = teamService;
     }
 
-
-
     @PostMapping("/addmember")
     public String addMember(@Valid Member member, BindingResult bindingResult, Model model) {
         return memberService.insert(member, bindingResult, model);
     }
 
-    @GetMapping("/members/{id}")
-    public String findByTeam(){
-        return "cadastrar";
+    @GetMapping("/member/{id}")
+    public String findByTeam(Model model, @PathVariable("id")long id){
+        model.addAttribute("members", memberService.findByTeamId(id));
+        return "member";
     }
 
 }

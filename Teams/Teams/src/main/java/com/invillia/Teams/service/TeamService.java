@@ -20,7 +20,12 @@ public class TeamService {
 
     @Transactional
     public void insert(Team team) {
-        teamRepository.save(team);
+
+        if (!team.getName().isBlank() && !team.getName().isEmpty())
+            teamRepository.save(team);
+        else
+//            throw new InvalidNameException();
+            System.out.println("Deu ruim");
     }
 
     public List<Team> findAll() {
@@ -36,15 +41,19 @@ public class TeamService {
     }
 
     public void update(Team team) {
-        teamRepository.save(team);
+        if (!team.getName().isBlank() && !team.getName().isEmpty()) {
+            teamRepository.save(team);
+        } else {
+            System.out.println("Deu ruim");
+        }
     }
 
     public String deleteById(long id, Model model) {
-        if (teamRepository.findById(id).isPresent()){
+        if (teamRepository.findById(id).isPresent()) {
             teamRepository.deleteById(id);
-            model.addAttribute("teams",teamRepository.findAll());
+            model.addAttribute("teams", teamRepository.findAll());
             return "index";
         }
-           return "#";
+        return "#";
     }
 }

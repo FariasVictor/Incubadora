@@ -1,10 +1,12 @@
 package com.invillia.Teams.controller;
 
+import com.invillia.Teams.domain.Team;
 import com.invillia.Teams.service.TeamService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class TeamController {
@@ -20,9 +22,18 @@ public class TeamController {
         return "index";
     }
 
-    @GetMapping("/add-team")
-    public String addTeam() {
-        return "add-team";
+    @PostMapping("/add-team")
+    public String addTeam(Model model, @Valid Team team) {
+        teamService.insert(team);
+        model.addAttribute("teams", teamService.findAll());
+        return "index";
+    }
+
+    @GetMapping("/edit-team/{id}")
+    public String editTeam(Model model, @PathVariable("id") long id) {
+        System.out.println(teamService.findById(id));
+        model.addAttribute("team", teamService.findById(id).get());
+        return "edit-team";
     }
 
     @GetMapping("/delete/{id}")
@@ -31,5 +42,11 @@ public class TeamController {
         return "index";
     }
 
+    @PostMapping("/update/{id}")
+    public String update(Team team, Model model) {
+        teamService.update(team);
+        model.addAttribute("teams", teamService.findAll());
+        return "index";
+    }
 
 }

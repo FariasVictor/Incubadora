@@ -13,11 +13,14 @@ import java.util.Optional;
 public interface MemberRepository extends JpaRepository<Member, Long> {
 
     Optional<Member> findByName(String name);
+    List<Member> findByTeamId(long id);
 
     @Query
             (value="select * from member m join team t  on m.team_id=t.id",
             nativeQuery = true
     )
     List<Member> findTest();
+
+
 
 }

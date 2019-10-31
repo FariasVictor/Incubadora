@@ -21,7 +21,7 @@ public class MemberService{
     @Transactional
     public String insert(Member member, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            return "add-member";
+            return "";
         }
         memberRepository.save(member);
         model.addAttribute("members", memberRepository.findAll());
@@ -42,6 +42,11 @@ public class MemberService{
 
     public Optional<Member> findByName(String name) {
         return memberRepository.findByName(name);
+    }
+
+    public List<Member> findByTeamId(long id){
+        System.out.println( memberRepository.findByTeamId(id));
+        return memberRepository.findByTeamId(id);
     }
 
     public void update(Member member) {

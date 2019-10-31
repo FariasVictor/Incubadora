@@ -1,11 +1,8 @@
 package com.invillia.Teams.service;
 
 import com.invillia.Teams.domain.Member;
-import com.invillia.Teams.domain.Team;
 import com.invillia.Teams.repository.MemberRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -29,10 +26,6 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public List<Member> findTest() {
-        return memberRepository.findTest();
-    }
-
     public Optional<Member> findById(long id) {
         return memberRepository.findById(id);
     }
@@ -47,7 +40,11 @@ public class MemberService {
     }
 
     public void update(Member member) {
-        memberRepository.save(member);
+        if (!member.getName().isBlank() && !member.getName().isEmpty()) {
+            memberRepository.save(member);
+        } else {
+            System.out.println("Deu ruim");
+        }
     }
 
     public void deleteById(long id) {

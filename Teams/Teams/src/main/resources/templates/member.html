@@ -47,11 +47,11 @@
                 <td th:text="${member.id}"></td>
                 <td th:text="${member.team.name}"></td>
                 <td>
-                    <a th:href="@{/edit-member/{id}(id=${member.id})}" class="edit" data-toggle="modal"><i
+                    <a th:href="@{/edit-member/{teamId}/{id}(id=${member.id},teamId=${teamId})}" class="edit" data-toggle="modal"><i
                             class="material-icons"
                             data-toggle="tooltip"
                             title="Edit">&#xE254;</i></a>
-                    <a th:href="@{/delete-member/{id}/{idTeam}(id=${member.id}, idTeam=${idDoTime})}" class="delete"
+                    <a th:href="@{/delete-member/{teamId}/{id}(id=${member.id}, teamId=${teamId})}" class="delete"
                        data-toggle="modal"><i
                             class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
@@ -64,7 +64,7 @@
 <div id="addMemberModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form th:action="@{/add-member/{idTeam} (idTeam=${idDoTime})}" th:object="${member}" method="post">
+            <form th:action="@{/add-member/{teamId} (teamId=${teamId})}" th:object="${member}" method="post">
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar Time</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label>Nome</label>
                         <input type="text" class="form-control" name="name" required>
-                        <input type="hidden" th:value="${idTeam}" name="team"/>
+                        <input type="hidden" th:value="${teamId}" name="team"/>
                     </div>
                 </div>
                 <div class="modal-footer">

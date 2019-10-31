@@ -24,24 +24,41 @@ public class MemberController {
         this.teamService = teamService;
     }
 
-    @PostMapping("/add-member/{idTeam}")
-    public String addMember(@Valid Member member, Model model, @PathVariable("idTeam") long idTeam) {
+    @PostMapping("/add-member/{teamId}")
+    public String addMember(@Valid Member member, Model model, @PathVariable("teamId") long teamId) {
         memberService.insert(member);
-        model.addAttribute("members", memberService.findByTeamId(idTeam));
+        model.addAttribute("members", memberService.findByTeamId(teamId));
+        model.addAttribute("teamId",teamId);
         return "member";
     }
 
-    @GetMapping("/member/{idTeam}")
-    public String findByTeam(Model model, @PathVariable("idTeam")long idTeam){
-        model.addAttribute("members", memberService.findByTeamId(idTeam));
-        model.addAttribute("idDoTime",idTeam);
+    @GetMapping("/member/{teamId}")
+    public String findByTeam(Model model, @PathVariable("teamId")long teamId){
+        model.addAttribute("members", memberService.findByTeamId(teamId));
+        model.addAttribute("teamId",teamId);
         return "member";
     }
 
-    @GetMapping("/delete-member/{id}/{idTeam}")
-    public String deleteById(@PathVariable("id")long id,@PathVariable("idTeam") long idTeam, Model model){
+    @GetMapping("/delete-member/{teamId}/{id}")
+    public String deleteById(@PathVariable("id")long id,@PathVariable("teamId") long teamId, Model model){
         memberService.deleteById(id);
-        model.addAttribute("members",memberService.findByTeamId(idTeam));
+        model.addAttribute("members",memberService.findByTeamId(teamId));
+        model.addAttribute("teamId",teamId);
         return "member";
     }
+    @GetMapping("/edit-member/{teamId}/{id}")
+    public String edit(Model model, @PathVariable("id")long id,@PathVariable("teamId") long teamId){
+        model.addAttribute("member",memberService.findById(id).get());
+        model.addAttribute("teamId",teamId);
+        return "edit-member";
+    }
+
+    @PostMapping("update-member/{teamId}/{id}")
+    public String update(Model model,Member member,@PathVariable("teamId") long teamId){
+        memberService.update(member);
+        model.addAttribute("members", memberService.findByTeamId(teamId));
+        model.addAttribute("teamId",teamId);
+        return "member";
+    }
+
 }

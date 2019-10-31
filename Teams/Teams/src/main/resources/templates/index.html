@@ -41,14 +41,14 @@
                 <td colspan="4" align="center">Nenhum usuário encontrado!</td>
             </tr>
             <tr th:each="team : ${teams}">
-                <td><a th:href="@{member/{idTeam} (idTeam=${team.id})}" th:text="${team.name}"></a></td>
+                <td><a th:href="@{member/{teamId} (teamId=${team.id})}" th:text="${team.name}"></a></td>
                 <td th:text="${team.id}"></td>
                 <td>
                     <a th:href="@{/edit-team/{id}(id=${team.id})}" class="edit" data-toggle="modal"><i
                             class="material-icons"
                             data-toggle="tooltip"
                             title="Edit">&#xE254;</i></a>
-                    <a th:href="@{/delete/team/{id}(id=${team.id})}" class="delete" data-toggle="modal"><i
+                    <a th:href="@{/delete-team/{id}(id=${team.id})}" class="delete" data-toggle="modal"><i
                             class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>

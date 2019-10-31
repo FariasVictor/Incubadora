@@ -23,8 +23,8 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-//        Optional<Team> team = teamRepository.findById(4L);
+//
+//        Optional<Team> team = teamRepository.findById(37L);
 //
 //        Member Member = new Member("Víctor", team.get());
 //        memberRepository.save(Member);

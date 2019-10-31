@@ -8,11 +8,11 @@
     <title>Cadastrar</title>
 </head>
 <body>
-    <h1> Editar</h1>
-    <form th:object="${team}" th:action="@{/update/{id}(id=${team.id})}" method="post">
-        <input type="text" placeholder="Digite o novo nome" name="name">
-        <button type="submit">Enviar</button>
-    </form>
+<h1> Editar</h1>
+<form th:object="${team}" th:action="@{/update/{id}(id=${team.id})}" method="post">
+    <input type="text" placeholder="Digite o novo nome" name="name">
+    <button type="submit">Enviar</button>
+</form>
 
 </body>
 </html>

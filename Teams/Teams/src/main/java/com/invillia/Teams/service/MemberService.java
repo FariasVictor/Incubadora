@@ -1,6 +1,7 @@
 package com.invillia.Teams.service;
 
 import com.invillia.Teams.domain.Member;
+import com.invillia.Teams.domain.Team;
 import com.invillia.Teams.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -11,28 +12,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MemberService{
+public class MemberService {
     private MemberRepository memberRepository;
+    private TeamService teamService;
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
     @Transactional
-    public String insert(Member member, BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            return "";
-        }
+    public void insert(Member member) {
         memberRepository.save(member);
-        model.addAttribute("members", memberRepository.findAll());
-        return "index";
     }
 
     public List<Member> findAll() {
         return memberRepository.findAll();
     }
 
-    public List<Member> findTest(){
+    public List<Member> findTest() {
         return memberRepository.findTest();
     }
 
@@ -44,8 +41,8 @@ public class MemberService{
         return memberRepository.findByName(name);
     }
 
-    public List<Member> findByTeamId(long id){
-        System.out.println( memberRepository.findByTeamId(id));
+    public List<Member> findByTeamId(long id) {
+        System.out.println(memberRepository.findByTeamId(id));
         return memberRepository.findByTeamId(id);
     }
 
@@ -54,6 +51,12 @@ public class MemberService{
     }
 
     public void deleteById(long id) {
-        memberRepository.deleteById(id);
+        if (memberRepository.findById(id).isPresent()) {
+            System.out.println("Não Deu ruim");
+            memberRepository.deleteById(id);
+        }else{
+            System.out.println("Deu ruim");
+            // throw exception
+        }
     }
 }

@@ -36,7 +36,7 @@ public class TeamController {
         return "edit-team";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/delete-team/{id}")
     public String delete(@PathVariable("id") long id, Model model) {
         teamService.deleteById(id, model);
         return "index";

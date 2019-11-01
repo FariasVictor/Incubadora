@@ -24,7 +24,12 @@ public class TeamController {
 
     @PostMapping("/add-team")
     public String addTeam(Model model, @Valid Team team) {
-        teamService.insert(team);
+        if (!team.getName().isBlank() && !team.getName().isEmpty())
+            teamService.insert(team);
+        else
+            System.out.println("Deu ruim");
+//            throw new InvalidNameException();
+
         model.addAttribute("teams", teamService.findAll());
         return "index";
     }
@@ -38,15 +43,19 @@ public class TeamController {
 
     @GetMapping("/delete-team/{id}")
     public String delete(@PathVariable("id") long id, Model model) {
-        teamService.deleteById(id, model);
-        return "index";
+        teamService.deleteById(id);
+        return "redirect:/";
     }
 
     @PostMapping("/update/{id}")
     public String update(Team team, Model model) {
-        teamService.update(team);
+        if (!team.getName().isBlank() && !team.getName().isEmpty()) {
+            teamService.update(team);
+        } else {
+            System.out.println("Deu ruim");
+        }
         model.addAttribute("teams", teamService.findAll());
-        return "index";
+        return "redirect:/";
     }
 
 }

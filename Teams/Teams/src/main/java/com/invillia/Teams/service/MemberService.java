@@ -3,6 +3,7 @@ package com.invillia.Teams.service;
 import com.invillia.Teams.domain.Member;
 import com.invillia.Teams.repository.MemberRepository;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,6 @@ import java.util.Optional;
 @Service
 public class MemberService {
     private MemberRepository memberRepository;
-    private TeamService teamService;
 
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -38,22 +38,20 @@ public class MemberService {
         return memberRepository.findByTeamId(id);
     }
 
+    @Transactional
     public void update(Member member) {
-        if (!member.getName().isBlank() && !member.getName().isEmpty()) {
-            Member auxMember=memberRepository.findById(member.getId()).get();
-            member.setCreationDate(auxMember.getCreationDate());
-            memberRepository.save(member);
-        } else {
-            System.out.println("Deu ruim");
-        }
+        Member auxMember = memberRepository.findById(member.getId()).get();
+        member.setCreationDate(auxMember.getCreationDate());
+        memberRepository.save(member);
     }
 
+    @Transactional
     public void deleteById(long id) {
         if (memberRepository.findById(id).isPresent()) {
             System.out.println("Não Deu ruim");
             memberRepository.deleteById(id);
-        }else{
-            System.out.println("Deu ruim");
+        } else {
+            System.out.println("ID inválido");
             // throw exception
         }
     }

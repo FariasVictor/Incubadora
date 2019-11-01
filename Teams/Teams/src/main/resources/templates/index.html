@@ -23,8 +23,6 @@
                 <div class="col-sm-6">
                     <a href="#addTeamModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
                         <span>Adicionar Time</span></a>
-                    <a href="#" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i>
-                        <span>Delete</span></a>
                 </div>
             </div>
         </div>
@@ -41,7 +39,9 @@
                 <td colspan="4" align="center">Nenhum usuário encontrado!</td>
             </tr>
             <tr th:each="team : ${teams}">
-                <td><a th:href="@{member/{teamId} (teamId=${team.id})}" th:text="${team.name}"></a></td>
+                <td>
+                        <a th:href="@{member/{teamId} (teamId=${team.id})}" th:text="${team.name}"></a>
+                </td>
                 <td th:text="${team.id}"></td>
                 <td>
                     <a th:href="@{/edit-team/{id}(id=${team.id})}" class="edit" data-toggle="modal"><i
@@ -52,10 +52,10 @@
                             class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
-
             </tbody>
         </table>
     </div>
+    <p>Clique no nome do time para acessar seus membros</p>
 </div>
 <!-- Edit Modal HTML -->
 <div id="addTeamModal" class="modal fade">
@@ -79,7 +79,10 @@
             </form>
         </div>
     </div>
+
 </div>
+
+
 
 <script>
    /* function postmyjava(id){
@@ -94,6 +97,20 @@ $.ajax({
         }
     });
 }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -270,6 +287,20 @@ body {
 	.modal form label {
 		font-weight: normal;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1> Editar</h1>
-    <form th:object="${team}" th:action="@{/update/{id}(id=${team.id})}" method="post">
+    <form th:object="${team}" th:action="@{/update/{id}(id=${team.id})}" th:method="post">
         <input type="text" placeholder="Digite o novo nome" name="name">
         <button type="submit">Enviar</button>
     </form>

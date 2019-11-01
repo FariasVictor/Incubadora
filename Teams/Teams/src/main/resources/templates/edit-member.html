@@ -10,8 +10,10 @@
 <body>
 <h1> Editar</h1>
 <form th:object="${member}" th:action="@{/update-member/{teamId}/{id}(id=${member.id},teamId=${teamId})}" method="post">
-    <input type="text" placeholder="Digite o novo nome" name="name">
-    <input type="text" placeholder="Digite o novo time">
+    <input type="text" placeholder="Digite o novo nome" name="name" required>
+    <select name="team" >
+        <option th:each="team: ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
+    </select>
     <input type="hidden" th:value="${teamId}" name="team"/>
     <button type="submit">Enviar</button>
 </form>

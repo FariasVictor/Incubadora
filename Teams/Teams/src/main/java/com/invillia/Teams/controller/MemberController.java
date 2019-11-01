@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.naming.InvalidNameException;
 import javax.validation.Valid;
 
 @Controller
@@ -24,15 +25,19 @@ public class MemberController {
         this.teamService = teamService;
     }
 
-//    @PostMapping("/member")
-//    public String allMembers(Model model ) {
-//        model.addAttribute("members", memberService.findAll());
-//        return "member";
-//    }
+    @GetMapping("/member")
+    public String allMembers(Model model ) {
+        model.addAttribute("members", memberService.findAll());
+        return "member";
+    }
 
     @PostMapping("/add-member/{teamId}")
-    public String addMember(@Valid Member member, Model model, @PathVariable("teamId") long teamId) {
-        memberService.insert(member);
+    public String addMember(@Valid Member member, Model model,@PathVariable("teamId") long teamId) {
+        if (!member.getName().isBlank() && !member.getName().isEmpty()) {
+            memberService.insert(member);
+        } else {
+            System.out.println("Deu ruim");
+        }
         model.addAttribute("members", memberService.findByTeamId(teamId));
         model.addAttribute("teamId",teamId);
         return "member";
@@ -55,13 +60,18 @@ public class MemberController {
     @GetMapping("/edit-member/{teamId}/{id}")
     public String edit(Model model, @PathVariable("id")long id,@PathVariable("teamId") long teamId){
         model.addAttribute("member",memberService.findById(id).get());
+        model.addAttribute("teams", teamService.findAll());
         model.addAttribute("teamId",teamId);
         return "edit-member";
     }
 
     @PostMapping("update-member/{teamId}/{id}")
-    public String update(Model model,Member member,@PathVariable("teamId") long teamId){
-        memberService.update(member);
+    public String update(Model model,Member member,@PathVariable("teamId") long teamId) throws InvalidNameException {
+        if (!member.getName().isBlank() && !member.getName().isEmpty()) {
+            memberService.update(member);
+        } else {
+            System.out.println("Nome Inválido");
+        }
         model.addAttribute("members", memberService.findByTeamId(teamId));
         model.addAttribute("teamId",teamId);
         return "member";

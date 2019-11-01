@@ -23,8 +23,6 @@
                 <div class="col-sm-6">
                     <a href="#addMemberModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
                         <span>Adicionar Membros</span></a>
-                    <a href="#" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i>
-                        <span>Delete</span></a>
                 </div>
             </div>
         </div>
@@ -47,7 +45,8 @@
                 <td th:text="${member.id}"></td>
                 <td th:text="${member.team.name}"></td>
                 <td>
-                    <a th:href="@{/edit-member/{teamId}/{id}(id=${member.id},teamId=${teamId})}" class="edit" data-toggle="modal"><i
+                    <a th:href="@{/edit-member/{teamId}/{id}(id=${member.id},teamId=${teamId})}" class="edit"
+                       data-toggle="modal"><i
                             class="material-icons"
                             data-toggle="tooltip"
                             title="Edit">&#xE254;</i></a>
@@ -56,7 +55,6 @@
                             class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 </td>
             </tr>
-
             </tbody>
         </table>
     </div>
@@ -73,7 +71,8 @@
                     <div class="form-group">
                         <label>Nome</label>
                         <input type="text" class="form-control" name="name" required>
-                        <input type="hidden" th:value="${teamId}" name="team"/>
+<!--                        <span th:if="*{name.empty}">Nome vazio</span>-->
+                        <input type="hidden" th:value="${teamId}" name="team" />
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -84,26 +83,6 @@
         </div>
     </div>
 </div>
-
-<script>
-   /* function postmyjava(id){
-//alert(id);
-$.ajax({
-    url: 'http://localhost:8080/edit-member/'+id.toString(),
-    processData: false,
-    contentType: false,
-    type: 'POST',
-    success: function(data){
-        alert(2543);
-        }
-    });
-}*/
-
-
-
-
-
-</script>
 <style>
 body {
         color: #566787;
@@ -251,5 +230,11 @@ body {
 
 
 
+
+
+
+
+
 </style>
+</body>
 </html>

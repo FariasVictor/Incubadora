@@ -17,9 +17,11 @@ public class Member {
     private String name;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private LocalDateTime updateTime;
 
     @ManyToOne

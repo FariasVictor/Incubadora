@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.StringJoiner;
 
 @Entity
@@ -20,10 +21,15 @@ public class Team {
     private String name;
 
     @CreationTimestamp
+    @Column(nullable = false)
     private LocalDateTime creationDate;
 
     @UpdateTimestamp
+    @Column(nullable = false)
     private LocalDateTime updateDate;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
+    private List<Member> members;
 
     public Team() {
     }

@@ -42,6 +42,8 @@ public class TeamService {
 
     public void update(Team team) {
         if (!team.getName().isBlank() && !team.getName().isEmpty()) {
+            Team auxTeam = teamRepository.findById(team.getId()).get();
+            team.setCreationDate(auxTeam.getCreationDate());
             teamRepository.save(team);
         } else {
             System.out.println("Deu ruim");

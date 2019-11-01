@@ -3,7 +3,6 @@ package com.invillia.Teams.service;
 import com.invillia.Teams.domain.Member;
 import com.invillia.Teams.repository.MemberRepository;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +40,8 @@ public class MemberService {
 
     public void update(Member member) {
         if (!member.getName().isBlank() && !member.getName().isEmpty()) {
+            Member auxMember=memberRepository.findById(member.getId()).get();
+            member.setCreationDate(auxMember.getCreationDate());
             memberRepository.save(member);
         } else {
             System.out.println("Deu ruim");

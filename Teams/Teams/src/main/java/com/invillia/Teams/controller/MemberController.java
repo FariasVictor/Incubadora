@@ -24,6 +24,12 @@ public class MemberController {
         this.teamService = teamService;
     }
 
+//    @PostMapping("/member")
+//    public String allMembers(Model model ) {
+//        model.addAttribute("members", memberService.findAll());
+//        return "member";
+//    }
+
     @PostMapping("/add-member/{teamId}")
     public String addMember(@Valid Member member, Model model, @PathVariable("teamId") long teamId) {
         memberService.insert(member);

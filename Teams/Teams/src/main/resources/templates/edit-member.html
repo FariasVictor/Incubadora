@@ -11,6 +11,7 @@
 <h1> Editar</h1>
 <form th:object="${member}" th:action="@{/update-member/{teamId}/{id}(id=${member.id},teamId=${teamId})}" method="post">
     <input type="text" placeholder="Digite o novo nome" name="name">
+    <input type="text" placeholder="Digite o novo time">
     <input type="hidden" th:value="${teamId}" name="team"/>
     <button type="submit">Enviar</button>
 </form>

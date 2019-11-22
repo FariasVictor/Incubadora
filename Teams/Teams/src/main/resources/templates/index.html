@@ -20,7 +20,12 @@
                 <div class="col-sm-6">
                     <h2>CRUD <b>Times</b></h2>
                 </div>
+<!--                    <form style="">-->
+<!--                        <input placeholder="Buscar time" type="text" name="teamName">-->
+<!--                        <input type="submit">-->
+<!--                    </form>-->
                 <div class="col-sm-6">
+
                     <a href="#addTeamModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
                         <span>Adicionar Time</span></a>
                 </div>
@@ -40,7 +45,7 @@
             </tr>
             <tr th:each="team : ${teams}">
                 <td>
-                        <a th:href="@{member/{teamId} (teamId=${team.id})}" th:text="${team.name}"></a>
+                    <a th:href="@{member/{teamId} (teamId=${team.id})}" th:text="${team.name}"></a>
                 </td>
                 <td th:text="${team.id}"></td>
                 <td>
@@ -83,7 +88,6 @@
 </div>
 
 
-
 <script>
    /* function postmyjava(id){
 //alert(id);
@@ -97,23 +101,6 @@ $.ajax({
         }
     });
 }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 <style>
 body {
@@ -287,25 +274,7 @@ body {
 	.modal form label {
 		font-weight: normal;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
+
 </html>
 <!--th:action="@{/edit-team/{id}(id=${team.id})}-->

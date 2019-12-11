@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.invillia.Account.service.OperationsWithdrawTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2019-12-11T15:34:01" hostname="incubadora14" time="0.113">
+  <properties/>
+  <testcase name="valueEqualsBalancePlusAvailableOverdraftWithdrawTest()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.042"/>
+  <testcase name="valueGreaterThanBalanceAndLessThanAvailableOverdraftWithdrawTest()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.006"/>
+  <testcase name="UnavailableValueWithdrawTest()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.018"/>
+  <testcase name="valueLessThanBalanceWithdrawTest()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.019"/>
+  <testcase name="NegativeValue()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.009"/>
+  <testcase name="valueEqualsBalanceWithdrawTest()" classname="com.invillia.Account.service.OperationsWithdrawTest" time="0.008"/>
+  <system-out><![CDATA[2019-12-11 13:34:00.501  INFO 2274 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.invillia.Account.service.OperationsWithdrawTest], using SpringBootContextLoader
+2019-12-11 13:34:00.502  INFO 2274 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.invillia.Account.service.OperationsWithdrawTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2019-12-11 13:34:00.502  INFO 2274 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.invillia.Account.service.OperationsWithdrawTest]: OperationsWithdrawTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2019-12-11 13:34:00.511  INFO 2274 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.invillia.Account.AccountApplication for test class com.invillia.Account.service.OperationsWithdrawTest
+2019-12-11 13:34:00.512  INFO 2274 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [com.invillia.Account.testexecutionlistener.CleanDatabaseTestExecutionListener, com.invillia.Account.testexecutionlistener.RestAssuredTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2019-12-11 13:34:00.512  INFO 2274 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@79e85208, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3f6ff0b9, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@24c9159e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@325105e, org.springframework.test.context.support.DirtiesContextTestExecutionListener@38666a20, org.springframework.test.context.transaction.TransactionalTestExecutionListener@78ccafad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@14c530cf, org.springframework.test.context.event.EventPublishingTestExecutionListener@3fc965e9, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@34753f5a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@29595fbe, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@14a75112, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@60358842, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7da7f4f1, com.invillia.Account.testexecutionlistener.CleanDatabaseTestExecutionListener@1ee0e054, com.invillia.Account.testexecutionlistener.RestAssuredTestExecutionListener@30610d5b]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.2.1.RELEASE)
+
+2019-12-11 13:34:00.541  INFO 2274 --- [    Test worker] c.i.A.service.OperationsWithdrawTest     : Starting OperationsWithdrawTest on incubadora14 with PID 2274 (started by incubadora14 in /home/incubadora14/Documentos/Incubadora/ContaCorrente2)
+2019-12-11 13:34:00.542  INFO 2274 --- [    Test worker] c.i.A.service.OperationsWithdrawTest     : No active profile set, falling back to default profiles: default
+2019-12-11 13:34:00.701  INFO 2274 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-12-11 13:34:00.711  INFO 2274 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9ms. Found 1 repository interfaces.
+2019-12-11 13:34:00.892  INFO 2274 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-12-11 13:34:00.995  WARN 2274 --- [    Test worker] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
+2019-12-11 13:34:00.999  INFO 2274 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2019-12-11 13:34:01.001  INFO 2274 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-11 13:34:01.002  INFO 2274 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-12-11 13:34:01.027  INFO 2274 --- [    Test worker] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2019-12-11 13:34:01.028  INFO 2274 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 483 ms
+2019-12-11 13:34:01.139  INFO 2274 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2019-12-11 13:34:01.147  INFO 2274 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2019-12-11 13:34:01.163  INFO 2274 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2019-12-11 13:34:01.172  INFO 2274 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2019-12-11 13:34:01.207  INFO 2274 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-12-11 13:34:01.207  INFO 2274 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-12-11 13:34:01.283  WARN 2274 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-12-11 13:34:01.386  INFO 2274 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-11 13:34:01.559  INFO 2274 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 43555 (http) with context path ''
+2019-12-11 13:34:01.561  INFO 2274 --- [    Test worker] c.i.A.service.OperationsWithdrawTest     : Started OperationsWithdrawTest in 1.045 seconds (JVM running for 11.465)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

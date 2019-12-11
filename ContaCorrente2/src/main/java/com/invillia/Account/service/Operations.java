@@ -1,7 +1,9 @@
 package com.invillia.Account.service;
 
-import com.invillia.Account.exception.InsufficientBalanceException;
+import com.invillia.Account.exception.AccountNotFoundException;
+import com.invillia.Account.mapper.AccountMapper;
 import com.invillia.Account.model.Account;
+import com.invillia.Account.model.request.OperationRequest;
 import com.invillia.Account.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +13,17 @@ public class Operations {
 
     private AccountRepository accountRepository;
 
+
     @Autowired
     public Operations(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
-    public void withdraw(Account account, Double value) {
+    public void withdraw(Long id, OperationRequest operationRequest) {
 
+        Account account=accountRepository.findById(id).orElseThrow(AccountNotFoundException::new);
+
+        double value = operationRequest.getValue();
         double balance = account.getBalance();
         double availableOverdraft = account.getAvailableOverdraft();
 
@@ -35,7 +41,12 @@ public class Operations {
         accountRepository.save(account);
     }
 
-    public void deposit(Account account, Double value) {
+    public void deposit(Long id, OperationRequest depositRequest) {
+
+        Account account=accountRepository.findById(id).orElseThrow(AccountNotFoundException::new);
+
+
+        double value = depositRequest.getValue();
         double maxOverdraft = account.getMaxOverdraft();
         double availableOverdraft = account.getAvailableOverdraft();
         double balance = account.getBalance();

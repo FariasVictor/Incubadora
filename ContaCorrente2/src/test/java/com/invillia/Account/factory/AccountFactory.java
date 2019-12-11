@@ -23,9 +23,10 @@ public class AccountFactory extends JBacon<Account> {
     protected Account getDefault() {
         final Account account=new Account();
 
-        account.setAvailableOverdraft(faker.number().randomDouble(2,0, 250000));
-        account.setBalance(faker.number().randomDouble(2,0,Integer.MAX_VALUE));
-        account.setMaxOverdraft(faker.number().randomDouble(2,Integer.parseInt(String.valueOf(account.getAvailableOverdraft())),250000));
+        account.setId(1L);
+        account.setAvailableOverdraft(faker.number().randomDouble(2,1, 250000));
+        account.setBalance(faker.number().randomDouble(2,1,Integer.MAX_VALUE));
+        account.setMaxOverdraft(faker.number().randomDouble(2, (int) account.getAvailableOverdraft(),250000));
         return account;
     }
 

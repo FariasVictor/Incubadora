@@ -2,8 +2,8 @@ package com.invillia.Account.mapper;
 
 import com.invillia.Account.model.Account;
 import com.invillia.Account.model.request.AccountRequest;
+import com.invillia.Account.model.request.UpdateLimitRequest;
 import com.invillia.Account.model.response.AccountResponse;
-import com.invillia.Account.repository.AccountRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 public class AccountMapper {
     public Account accountRequestToAccount(AccountRequest accountRequest) {
         Account account = new Account();
-        account.setAvailableOverdraft(accountRequest.getAvailableOverdraft());
+        account.setAvailableOverdraft(accountRequest.getMaxOverdraft());
         account.setBalance(accountRequest.getBalance());
         account.setMaxOverdraft(accountRequest.getMaxOverdraft());
         return account;
@@ -37,9 +37,15 @@ public class AccountMapper {
         return accountResponses;
     }
 
-    public void updateAccountByAccountRequest(Account account, AccountRequest accountRequest) {
-        account.setMaxOverdraft(accountRequest.getMaxOverdraft());
-        account.setBalance(accountRequest.getBalance());
-        account.setAvailableOverdraft(accountRequest.getAvailableOverdraft());
+    public void updateMaxOverdraftByUpdateLimitRequest(Account account, UpdateLimitRequest updateLimitRequest) {
+        account.setMaxOverdraft(updateLimitRequest.getMaxOverdraft());
     }
+
+
+//    public Account depositRequestToAccount(OperationRequest depositRequest){
+//        Account account= new Account(depositRequest.getBalance(),
+//                depositRequest.getAvailableOverdraft(),
+//                depositRequest.getMaxOverdraft());
+//        return account;
+//    }
 }

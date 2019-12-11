@@ -4,6 +4,7 @@ import com.invillia.Account.exception.AccountNotFoundException;
 import com.invillia.Account.mapper.AccountMapper;
 import com.invillia.Account.model.Account;
 import com.invillia.Account.model.request.AccountRequest;
+import com.invillia.Account.model.request.UpdateLimitRequest;
 import com.invillia.Account.model.response.AccountResponse;
 import com.invillia.Account.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,14 +38,13 @@ public class AccountService {
     }
     public List<AccountResponse> findAll(){
 
-        List<Account> accounts=accountRepository.findAll();
-        List<AccountResponse> accountResponses=accountMapper.accountToAccountResponse(accounts);
-        return accountResponses;
+        List<Account> accounts=accountRepository.findAllByOrderByIdAsc();
+        return accountMapper.accountToAccountResponse(accounts);
     }
 
-    public void update(Long id, AccountRequest accountRequest){
+    public void update(Long id, UpdateLimitRequest updateLimitRequest){
         Account account= accountRepository.findById(id).orElseThrow(AccountNotFoundException::new);
-        accountMapper.updateAccountByAccountRequest(account,accountRequest);
+        accountMapper.updateMaxOverdraftByUpdateLimitRequest(account,updateLimitRequest);
         accountRepository.save(account);
     }
 

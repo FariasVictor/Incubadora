@@ -13,22 +13,32 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-    }
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    runtimeOnly 'org.postgresql:postgresql'
+//    implementation 'org.springframework.boot:spring-boot-starter'
+//
+//    testImplementation 'com.h2database:h2'
+//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//    }
+//    testImplementation "br.com.leonardoferreira:JBacon:2.0.1"
+//    testImplementation "com.github.javafaker:javafaker:1.0.1"
+//    testImplementation "io.rest-assured:rest-assured"
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+
+    runtimeOnly "org.postgresql:postgresql"
+
+    testImplementation "com.h2database:h2"
     testImplementation "br.com.leonardoferreira:JBacon:2.0.1"
     testImplementation "com.github.javafaker:javafaker:1.0.1"
     testImplementation "io.rest-assured:rest-assured"
-//    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.7.Final'
-//
-//    compile group: 'org.springframework', name: 'spring-web', version: '5.2.0.RELEASE'
-//    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.2.0.RELEASE'
-//    compile group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
+    }
 }
 
 test {

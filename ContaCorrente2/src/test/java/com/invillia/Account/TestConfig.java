@@ -1,4 +1,4 @@
-package com.invillia.Account.testexecutionlistener;
+package com.invillia.Account;
 
 import com.github.javafaker.Faker;
 import org.springframework.context.annotation.Bean;

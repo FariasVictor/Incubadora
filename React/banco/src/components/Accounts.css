@@ -1,3 +1,13 @@
 .operations :hover {
-    opacity: 0.7;
+    width: 1150px;
+}
+
+
+/* th :first-child,
+th :last-child {
+    text-align: center;
+} */
+
+.btn-group {
+    margin: 0 20px;
 }

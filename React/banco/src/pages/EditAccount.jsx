@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Field from '../components/Field'
-import {Link} from 'react-router-dom'
 
 import SubmitButtons from '../components/SubmitButtons'
 
@@ -22,7 +21,7 @@ class EditAccount extends Component {
 
     axios.put(`/${this.retrieveAccountId()}`, this.state.account).then(() => this.props.history.push("/"))
     //   .catch(({ response }) => {     if (response.status === 400) {
-    // this.setState({errors: response.data})     }   })
+    // this.setState({errors: response.data.errors})     }   })
   }
 
   handleChange = (event) => {
@@ -38,14 +37,14 @@ class EditAccount extends Component {
   }
 
   render() {
-    const {book, errors} = this.state;
+    const {account, errors} = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <Field
           name="maxOverdraft"
           label="Novo limite"
           value={this.state.account.maxOverdraft}
-          errors={errors["maxOverdraft"]}
+          // errors={errors[0].defaultMessage}
           onChange={this.handleChange}/>
         <SubmitButtons/>
 

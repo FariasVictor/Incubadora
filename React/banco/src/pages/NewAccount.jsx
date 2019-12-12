@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from '../utils/httpClient';
-import {NavLink} from 'react-router-dom';
 
 import Field from '../components/Field';
 import SubmitButtons from '../components/SubmitButtons';

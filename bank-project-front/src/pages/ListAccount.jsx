@@ -9,16 +9,15 @@ class ListAccount extends Component {
   }
   retrieveAccounts() {
     axios
-      .get("/")
+      .get("/account")
       .then(({data}) => {
         this.setState({accounts: data})
-        console.log(this.state.accounts)
       })
   }
 
   deleteAccount(id) {
     axios
-      .delete(`/${id}`)
+      .delete(`/account/${id}`)
       .then(() => this.retrieveAccounts());
   }
 
@@ -35,6 +34,7 @@ adadsd
           <thead className="thead-dark">
             <tr className="text-center">
               <th>ID</th>
+              <th>Cliente</th>
               <th>Saldo</th>
               <th>Limite Disponível</th>
               <th>Limite Máximo</th>
@@ -49,6 +49,7 @@ adadsd
                 <td className="align-middle text-center">
                   <strong>{account.id}</strong>
                 </td>
+                <td className="align-middle">{account.customer.name}</td>
                 <td className="align-middle">R$ {account.balance}</td>
                 <td className="align-middle">R$ {account.availableOverdraft}</td>
                 <td className="align-middle">R$ {account.maxOverdraft}</td>

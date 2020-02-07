@@ -8,7 +8,8 @@ class NewAccount extends Component {
   state = {
     account: {
       balance: "",
-      maxOverdraft: ""
+      maxOverdraft: "",
+      customerId: ""
     },
     errors: [],
   }
@@ -27,7 +28,7 @@ class NewAccount extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("/", this.state.account)
+      .post("/account", this.state.account)
       .then(() => this.props.history.push("/"))
       .catch(({ response }) => {
         if (response.status === 400) {
@@ -58,6 +59,14 @@ class NewAccount extends Component {
             onChange={this.handleChange} 
             errors={errors["maxOverdraft"]}
             />
+          <Field
+            name="customerId"
+            label="Id do cliente"
+            value={account.customerId}
+            onChange={this.handleChange}
+            errors={errors["customerId"]}
+
+          />
           <SubmitButtons />
           {/* {this.errorsListing(errors).map(
             message.replace(message.charAt(0),message.charAt(0).toUpperCase)

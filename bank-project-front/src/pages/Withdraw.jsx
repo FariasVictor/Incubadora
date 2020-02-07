@@ -3,31 +3,25 @@ import Field from '../components/Field';
 import SubmitButtons from '../components/SubmitButtons';
 import axios from '../utils/httpClient';
 
-class Deposit extends Component {
+class Withdraw extends Component {
   state = {
     operationRequest: {
       value: ""
     },
     errors: []
   }
-
-  retrieveAccount = () => this.props.match.params.id;
   
+  retrieveAccountId = () => this.props.match.params.id
+
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`/deposit/${this.retrieveAccount()}`, this.state.operationRequest)
-      .then(()=>this.props.history.push("/"))
-      .catch(({response}) => {
-        if (response.status === 400) {
-          this.setState({
-            errors: response.data
-          })
-          console.log(typeof(this.state.errors));
-        }
-      })
+    axios
+      .put(`/account/withdraw/${this.retrieveAccountId()}`,this.state.operationRequest)
+      .then(() => this.props.history.push("/"))
   }
 
-  handleChange = (event) => {
+
+  handleChange = event => {
     let field = event.target.name
     let value = event.target.value
 
@@ -45,15 +39,14 @@ class Deposit extends Component {
       <form onSubmit={this.handleSubmit}>
         <Field
           name="value"
-          label="Valor do depósito"
-          value={
-            operationRequest.value}
+          label="Valor do saque"
+          value={this.state.operationRequest.value}
           onChange={this.handleChange}
-          errors={errors["message"]} />
+          errors={errors["value"]} />
         <SubmitButtons />
       </form>
     );
   }
 }
 
-export default Deposit;
+export default Withdraw;

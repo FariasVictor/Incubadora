@@ -15,7 +15,7 @@ class Deposit extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`/deposit/${this.retrieveAccount()}`, this.state.operationRequest)
+    axios.put(`account/deposit/${this.retrieveAccount()}`, this.state.operationRequest)
       .then(()=>this.props.history.push("/"))
       .catch(({response}) => {
         if (response.status === 400) {

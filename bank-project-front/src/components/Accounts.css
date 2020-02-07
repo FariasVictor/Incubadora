@@ -1,0 +1,13 @@
+.operations :hover {
+    width: 1150px;
+}
+
+
+/* th :first-child,
+th :last-child {
+    text-align: center;
+} */
+
+.btn-group {
+    margin: 0 20px;
+}

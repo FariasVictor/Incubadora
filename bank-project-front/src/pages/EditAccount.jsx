@@ -20,7 +20,7 @@ class EditAccount extends Component {
     event.preventDefault();
 
     axios
-      .put(`/${this.retrieveAccountId()}`, this.state.account)
+      .put(`/account/${this.retrieveAccountId()}`, this.state.account)
       .then(() => this.props.history.push("/"))
       .catch(({ response }) => {
         if (response.status === 400) {
